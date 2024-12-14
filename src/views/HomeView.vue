@@ -1,4 +1,5 @@
 <template>
+  <!-- Header Section -->
   <header class="header-container">
     <div class="content-wrapper">
       <div class="text-content">
@@ -24,111 +25,22 @@
     </div>
   </header>
 
+  <!-- Step Section -->
   <section class="section-container">
+    <div class="circle-custom circle-custom-right"></div>
+    <div class="circle-custom circle-custom-left"></div>
     <div class="section-wrapper">
       <div class="text-section">
         <h2>O Segredo Para Proporcionar Prazer!</h2>
         <ul class="steps-list">
-          <li>
+          <li v-for="(step, index) in steps" :key="index">
             <div class="step-icon">
-              <img
-                src="../../public/Images/Vector.png"
-                alt="Step 1"
-                class="step-icon"
-              />
-              <span class="step-number">1</span>
+              <img src="../../public/Images/Vector.png" alt="Step Icon" />
+              <span class="step-number">{{ index + 1 }}</span>
             </div>
             <div>
-              <h3>Entenda a Anatomia Feminina</h3>
-              <p>
-                Comece por compreender as zonas erógenas femininas e como a
-                estimulação de cada área contribui para o prazer.
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="step-icon">
-              <img
-                src="../../public/Images/Vector.png"
-                alt="Step 2"
-                class="step-icon"
-              />
-              <span class="step-number">2</span>
-            </div>
-            <div>
-              <h3>Comunicação Aberta e Sincera</h3>
-              <p>
-                Construa uma atmosfera de confiança e comunicação aberta com sua
-                parceira. Pergunte o que ela gosta e deseja.
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="step-icon">
-              <img
-                src="../../public/Images/Vector.png"
-                alt="Step 3"
-                class="step-icon"
-              />
-              <span class="step-number">3</span>
-            </div>
-            <div>
-              <h3>Domine a Arte das Preliminares</h3>
-              <p>
-                Dedique tempo às preliminares e explore diferentes toques,
-                beijos e carícias que despertem a sensualidade.
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="step-icon">
-              <img
-                src="../../public/Images/Vector.png"
-                alt="Step 4"
-                class="step-icon"
-              />
-              <span class="step-number">4</span>
-            </div>
-            <div>
-              <h3>Explore Posições Inovadoras</h3>
-              <p>
-                Varie as posições sexuais e descubra quais delas despertam o
-                maior prazer em sua parceira.
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="step-icon">
-              <img
-                src="../../public/Images/Vector.png"
-                alt="Step 5"
-                class="step-icon"
-              />
-              <span class="step-number">5</span>
-            </div>
-            <div>
-              <h3>Aprenda Técnicas de Estimulação</h3>
-              <p>
-                Desvende as melhores técnicas para estimular o clitóris e outras
-                áreas sensíveis.
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="step-icon">
-              <img
-                src="../../public/Images/Vector.png"
-                alt="Step 6"
-                class="step-icon"
-              />
-              <span class="step-number">6</span>
-            </div>
-            <div>
-              <h3>Conecte-se Emocionalmente</h3>
-              <p>
-                Crie uma conexão emocional forte para intensificar a experiência
-                íntima.
-              </p>
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.description }}</p>
             </div>
           </li>
         </ul>
@@ -143,49 +55,313 @@
   </section>
 
   <section class="seduction-section">
-    <div class="seduction">
-      <h2>Domine a Arte da Sedução!</h2>
-      <div class="features">
-        <div class="feature">
-          <h3>Linguagem Corporal e Sedução</h3>
+    <div class="container-seduction">
+      <div class="seduction">
+        <h2>Domine a Arte da Sedução!</h2>
+        <div class="features">
+          <div
+            class="feature"
+            v-for="(feature, index) in features"
+            :key="index"
+          >
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+          </div>
+        </div>
+        <button class="cta-button">Adquira Já e Atraia o Prazer!</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Section -->
+  <section class="promo-section">
+    <div class="container-promo">
+      <div class="timer">
+        <div class="time-unit" v-for="(time, unit) in countdown" :key="unit">
+          <span>{{ time }}</span>
+          <p>{{ unit.toUpperCase() }}</p>
+        </div>
+      </div>
+      <div class="promo-text-container">
+        <p class="promo-text">
+          O seu acesso nesta página garante as
+          <span class="highlight">ofertas de promoção</span> deste mês durante o
+          tempo deste contador
+        </p>
+      </div>
+      <button class="cta-button">
+        Adquira Agora e Obtenha 15% de Desconto!
+      </button>
+    </div>
+    <div class="footer-banner">
+      <span v-for="n in 12" :key="n">15% OFF</span>
+    </div>
+  </section>
+
+  <section class="mockup-section">
+    <div class="circle circle-right"></div>
+    <div class="circle circle-left"></div>
+    <div class="mockup-container">
+      <img src="../../public/Images/cel1.png" alt="Mockup Celular Esquerdo" />
+      <img src="../../public/Images/cel2.png" alt="Mockup Celular Direito" />
+    </div>
+    <div class="text-container">
+      <h2>
+        A Fórmula Perfeita Para Recuperar o <span>Prazer</span> e
+        <span>Intimidade</span>. Ideal para:
+      </h2>
+      <div class="text-row">
+        <div class="text-item">
+          <img src="../../public/Images/gota.png" alt="Gota" />
           <p>
-            O olhar, o toque e a postura podem comunicar muito sobre seus
-            desejos e criar o clima de sedução ideal.
+            Para as casadas que desejam reavivar a paixão e desfrutar de
+            momentos íntimos mais prazerosos.
           </p>
         </div>
-        <div class="feature">
-          <h3>Crie um Ambiente Romântico</h3>
+        <div class="text-item">
+          <img src="../../public/Images/gota.png" alt="Gota" />
           <p>
-            Invista em música suave, iluminação adequada e aromas agradáveis
-            para um ambiente propício à sedução.
+            Para as jovens e adultas que buscam uma vida sexual vibrante e cheia
+            de fogo.
           </p>
         </div>
-        <div class="feature">
-          <h3>Desperte os Sentidos</h3>
+        <div class="text-item">
+          <img src="../../public/Images/gota.png" alt="Gota" />
           <p>
-            Explore texturas, sabores e sons para estimular os sentidos e criar
-            uma experiência única.
+            Para mulheres solteiras em busca de mais energia e realização na
+            vida amorosa.
           </p>
         </div>
       </div>
-      <button class="cta-button">Adquira Já o Seu Acesso!</button>
+      <div class="text-row">
+        <div class="text-item">
+          <img src="../../public/Images/gota.png" alt="Gota" />
+          <p>
+            Para as mulheres cujos hormônios precisam de equilíbrio e que
+            anseiam recuperar sua libido.
+          </p>
+        </div>
+        <div class="text-item">
+          <img src="../../public/Images/gota.png" alt="Gota" />
+          <p>
+            Para as amantes do prazer genuíno, buscando a elevação das sensações
+            e experiências.
+          </p>
+        </div>
+        <div class="text-item">
+          <img src="../../public/Images/gota.png" alt="Gota" />
+          <p>
+            Para as mães que passaram pela gestação e agora buscam reconectar-se
+            com a intimidade.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+
+const steps = [
+  {
+    title: "Entenda a Anatomia Feminina",
+    description:
+      "Comece por compreender as zonas erógenas femininas e como a estimulação de cada área contribui para o prazer.",
+  },
+  {
+    title: "Comunicação Aberta e Sincera",
+    description:
+      "Construa uma atmosfera de confiança e comunicação aberta com sua parceira. Pergunte o que ela gosta e quais são seus desejos, para que possa oferecer o prazer que ela realmente busca.",
+  },
+  {
+    title: "Domine a Arte das Preliminares",
+    description:
+      "Dedique tempo às preliminares e explore diferentes toques, beijos e carícias que despertem a sensualidade da sua parceira.",
+  },
+  {
+    title: "Explore Posições Inovadoras",
+    description:
+      "Varie as posições sexuais e descubra quais delas despertam o maior prazer em sua parceira.",
+  },
+  {
+    title: "Aprenda Técnicas de Estimulação",
+    description:
+      "Desvende as melhores técnicas para estimular o clitóris, o Ponto G e outras áreas sensíveis proporcionando orgasmos intensos e satisfatórios para sua parceira.",
+  },
+  {
+    title: "Conecte-se Emocionalmente",
+    description:
+      "O prazer sexual vai além do físico. Crie uma conexão emocional forte com sua parceira demonstre afeto, carinho e atenção, intensificando a experiência íntima.",
+  },
+];
+
+const features = [
+  {
+    title: "Linguagem Corporal e Sedução",
+    description:
+      "O olhar, o toque, a postura e a maneira como você se move podem comunicar muito sobre seus desejos e intensificar o clima de sedução. Aprenda a usar a linguagem corporal a seu favor.",
+  },
+  {
+    title: "Crie um Ambiente Romântico",
+    description:
+      "Um ambiente relaxante, com música suave, iluminação suave, aromas agradáveis e um toque de sensualidade contribui para a atmosfera ideal para a sedução e o prazer.",
+  },
+  {
+    title: "Desperte os Sentidos",
+    description:
+      "Explore diferentes texturas, aromas, sabores e sons para estimular os sentidos da sua parceira. Use a criatividade para criar uma experiência multissensorial que intensifique o prazer.",
+  },
+];
+
+// Timer dinâmico
+const countdown = ref({
+  dias: "00",
+  horas: "00",
+  minutos: "00",
+  segundos: "00",
+});
+const countdownTarget = new Date().getTime() + 2 * 60 * 60 * 1000;
+
+const startCountdown = () => {
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = countdownTarget - now;
+
+    if (distance <= 0) return;
+
+    countdown.value = {
+      dias: String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(
+        2,
+        "0"
+      ),
+      horas: String(
+        Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      ).padStart(2, "0"),
+      minutos: String(
+        Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+      ).padStart(2, "0"),
+      segundos: String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(
+        2,
+        "0"
+      ),
+    };
+  }, 1000);
+};
+
+onMounted(() => {
+  startCountdown();
+});
+</script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+/* Circulos */
+
 section {
-  width: 100vw;
+  position: relative;
+  background-color: #000; /* Fundo preto */
+  padding: 100px 0; /* Espaçamento interno */
+  overflow: hidden; /* Esconde os círculos fora da área */
 }
+
+/* Círculos vermelhos */
+.circle {
+  position: absolute;
+  background-color: #ff3b3b;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  opacity: 90%;
+  filter: blur(50px);
+  box-shadow: 0 0 100px 50px rgba(255, 59, 59, 0.6);
+  z-index: 0;
+}
+
+/* Posicionamento dos círculos */
+.circle-left {
+  left: -150px;
+}
+
+.circle-right {
+  right: 80px;
+}
+
+.circle-custom {
+  position: absolute;
+  background-color: #ff3b3b;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  opacity: 90%;
+  filter: blur(50px);
+  box-shadow: 0 0 100px 50px rgba(255, 59, 59, 0.6);
+  z-index: 0;
+}
+
+.circle-custom-left {
+  left: -250px;
+}
+
+.circle-custom-right {
+  right: 10px;
+}
+
+/* Primeiro círculo no topo */
+.circle-custom:nth-child(1) {
+  top: 375px;
+}
+
+/* Segundo círculo mais abaixo */
+.circle-custom:nth-child(2) {
+  top: -280px;
+}
+
+/* Primeiro círculo no topo */
+.circle:nth-child(1) {
+  top: 600px;
+}
+/* Segundo círculo mais abaixo */
+.circle:nth-child(2) {
+  top: 150px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #e60000;
+}
+
+/* section {
+  min-height: 100vh;
+} */
+
+/* Header */
 
 .header-container {
   background: url("../../public/Images/header_background.jpg") no-repeat center
     center / cover;
   color: #fff;
-  width: 100vw;
-  height: 927px;
+  height: 850px;
   flex-shrink: 0;
 }
 
@@ -206,32 +382,46 @@ section {
 .text-content h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: #faebeb;
+  font-family: "Playfair Display";
+  font-weight: 700;
 }
 
 .text-content p {
   font-size: 1.125rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  color: #ffe5e5;
+  font-family: "DM Sans";
+  font-weight: 400;
 }
 
+/* Button */
+
 .cta-button {
-  background-color: #e63946;
+  display: inline-block;
+  margin: 30px auto 0;
+  padding: 15px 20px;
+  background-color: #e60000;
   color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
+  font-weight: 700;
   font-size: 1rem;
+  font-family: "DM Sans";
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
-  background-color: #d62828;
+  background-color: #f04e4e;
 }
+
+/* IMG header | Section 1 */
 
 .image-content img {
   max-width: 400px;
-  border-radius: 10px;
+  border-radius: 25px;
 }
 
 .section-container {
@@ -261,6 +451,9 @@ section {
 .text-section h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
+  color: #faebeb;
+  font-family: "Playfair Display";
+  font-weight: 600;
 }
 
 .step-icon {
@@ -273,7 +466,7 @@ section {
 }
 
 .step-icon img {
-  width: 100%;
+  width: 45px;
   height: auto;
 }
 
@@ -283,7 +476,7 @@ section {
   font-weight: bold;
   color: #fff;
   top: 50%;
-  left: 30%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
@@ -308,45 +501,222 @@ section {
 .steps-list h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  color: #ffe5e5;
+  font-family: "Playfair Display";
+  font-weight: 600;
 }
 
 .steps-list p {
   font-size: 1rem;
   line-height: 1.5;
+  color: #ffe5e5;
+  font-family: "DM Sans";
+  font-weight: 400;
 }
+
+/* Seduction section */
 
 .seduction-section {
-  background-color: #000000;
+  background-color: #000;
   color: #fff;
-  padding: 3rem 2rem;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
 }
 
-.seduction-section h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+.seduction h2 {
+  text-align: left;
+  font-size: 45px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  color: #faebeb;
+  font-family: "Playfair Display";
+}
+
+.container-seduction {
+  max-width: 900px;
+  padding: 5px;
 }
 
 .features {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 40px;
+  text-align: left;
 }
 
 .feature {
-  max-width: 300px;
+  flex: 1;
+  padding: 10px;
 }
 
 .feature h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 22.5px;
+  margin-bottom: 10px;
+  color: #faebeb;
+  font-family: "Playfair Display";
+  font-weight: 600;
 }
 
 .feature p {
-  font-size: 1rem;
+  font-size: 16.2px;
+  line-height: 1.5;
+  color: #ffe5e5;
+  font-family: "DM Sans";
+  font-weight: 400;
+}
+
+/* Promo Section */
+.promo-section {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.container-promo {
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  max-width: 800px;
+}
+
+.promo-text-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 450px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.time-unit {
+  background-color: #e60000;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.time-unit span {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.time-unit p {
+  font-size: 0.7rem;
+}
+
+.timer span {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.promo-text {
+  margin-bottom: 20px;
+  font-size: 1.7rem;
+  color: #ccc;
+}
+
+.promo-text .highlight {
+  color: #e60000;
+  font-weight: bold;
+}
+
+/* Footer Banner */
+.footer-banner {
+  margin-top: 50px;
+  background-color: #e60000;
+  color: #fff;
+  padding: 10px;
+  font-size: 26px;
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+/* Mockup section */
+
+.mockup-section {
+  background-color: #000; /* Fundo preto */
+  color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.mockup-container {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 50px;
+  margin-bottom: 150px;
+}
+
+.mockup-container img {
+  width: 300px;
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.text-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text-container h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-family: "Playfair Display";
+}
+
+.text-container h2 span {
+  color: #ff3b3b; /* Destaque em vermelho */
+  font-weight: 700;
+}
+
+.text-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.text-item {
+  display: flex;
+  align-items: start;
+  max-width: 30%;
+  text-align: left;
   line-height: 1.5;
 }
+
+.text-item img {
+  width: 20px; /* Ajuste do tamanho da gota */
+  margin-right: 10px;
+}
+
+.text-item p {
+  font-size: 1rem;
+  color: #fff;
+  font-family: "DM Sans";
+  font-weight: 400;
+}
+
+/* Responsividade */
 
 @media (max-width: 768px) {
   .content-wrapper,
