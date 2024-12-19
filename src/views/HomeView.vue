@@ -158,6 +158,88 @@
       </div>
     </div>
   </section>
+
+  <section class="pleasure-section">
+    <div class="overlay"></div>
+    <div class="content-container">
+      <h2>Seja o Protagonista do Prazer!</h2>
+      <div class="pleasure-cards">
+        <div class="card">
+          <div class="card-number">1</div>
+          <div class="card-content">
+            <h3>Intimidade e Confiança</h3>
+            <p>
+              Construa uma base sólida de intimidade e confiança com sua
+              parceira. A comunicação aberta, a empatia e a compreensão mútua
+              são essenciais para uma relação sexual plena e satisfatória.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-number">2</div>
+          <div class="card-content">
+            <h3>Exploração e Descoberta</h3>
+            <p>
+              Desvendem juntos os desejos e preferências um do outro, abram-se
+              para novas experiências e aprendam a se comunicar de forma clara e
+              honesta sobre seus desejos e necessidades.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-number">3</div>
+          <div class="card-content">
+            <h3>Compartilhar Emoções</h3>
+            <p>
+              A intimidade sexual é uma oportunidade de compartilhar emoções,
+              fortalecer os laços e aprofundar a conexão. Expresse seus
+              sentimentos, deixe-se levar pela paixão e desfrute da
+              cumplicidade.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-number">4</div>
+          <div class="card-content">
+            <h3>Prazer Mútuo</h3>
+            <p>
+              O foco deve estar no prazer mútuo, na busca pelo bem-estar e na
+              satisfação de ambos. Aprenda a dar e receber prazer, reconhecendo
+              as necessidades e desejos do outro.
+            </p>
+          </div>
+        </div>
+      </div>
+      <button class="cta-button-pleasure">
+        Transforme sua relação: obtenha agora!
+      </button>
+    </div>
+  </section>
+
+  <section class="positions-section">
+    <div class="content-container">
+      <h2>As Melhores Posições Para Explorar</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Posição</th>
+              <th>Benefícios</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(position, index) in positions" :key="index">
+              <td>{{ position.name }}</td>
+              <td>{{ position.benefits }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="cta-button-position">
+        Garanta e Seja o Protagonista do Prazer!
+      </button>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -214,6 +296,34 @@ const features = [
   },
 ];
 
+const positions = [
+  {
+    name: "Missionária",
+    benefits:
+      "Clássica e versátil, permite fácil acesso ao clitóris e ao Ponto G.",
+  },
+  {
+    name: "De Cima",
+    benefits:
+      "Permite maior controle para a mulher, intensificando a estimulação do clitóris e do Ponto G.",
+  },
+  {
+    name: "A Cavalgada",
+    benefits:
+      "Oferece maior liberdade de movimento para a mulher, intensificando o prazer e o controle.",
+  },
+  {
+    name: "Lateral",
+    benefits:
+      "Ideal para intimidade e conexão, permite toques mais sensuais e facilita a estimulação do clitóris.",
+  },
+  {
+    name: "De Quatro",
+    benefits:
+      "Facilita o acesso ao Ponto G e intensifica a estimulação do clitóris, proporcionando orgasmos intensos.",
+  },
+];
+
 // Timer dinâmico
 const countdown = ref({
   dias: "00",
@@ -229,7 +339,6 @@ const startCountdown = () => {
     const distance = countdownTarget - now;
 
     if (distance <= 0) return;
-
     countdown.value = {
       dias: String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(
         2,
@@ -261,9 +370,9 @@ onMounted(() => {
 
 section {
   position: relative;
-  background-color: #000; /* Fundo preto */
-  padding: 100px 0; /* Espaçamento interno */
-  overflow: hidden; /* Esconde os círculos fora da área */
+  background-color: #000;
+  padding: 100px 0;
+  overflow: hidden;
 }
 
 /* Círculos vermelhos */
@@ -349,6 +458,16 @@ html::-webkit-scrollbar {
 
 html::-webkit-scrollbar-thumb {
   background: #e60000;
+}
+
+button {
+  color: #fff;
+  text-align: center;
+  font-family: "DM Sans";
+  font-size: 16.073px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25.92px;
 }
 
 /* section {
@@ -649,7 +768,7 @@ html::-webkit-scrollbar-thumb {
 /* Mockup section */
 
 .mockup-section {
-  background-color: #000; /* Fundo preto */
+  background-color: #000;
   color: #fff;
   padding: 50px 20px;
   text-align: center;
@@ -684,7 +803,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .text-container h2 span {
-  color: #ff3b3b; /* Destaque em vermelho */
+  color: #ff3b3b;
   font-weight: 700;
 }
 
@@ -705,7 +824,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .text-item img {
-  width: 20px; /* Ajuste do tamanho da gota */
+  width: 20px;
   margin-right: 10px;
 }
 
@@ -714,6 +833,211 @@ html::-webkit-scrollbar-thumb {
   color: #fff;
   font-family: "DM Sans";
   font-weight: 400;
+}
+
+/* pleasure section */
+
+.pleasure-section {
+  position: relative;
+  background: url("../../public/Images/section4.jpg") no-repeat center center;
+  background-size: cover;
+  padding: 4rem 2rem;
+  color: #ffe5e5;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.767);
+  z-index: 0;
+}
+
+.content-container {
+  position: relative;
+  max-width: 950px;
+  margin: 0 auto;
+  z-index: 1;
+  text-align: left;
+}
+
+.content-container h2 {
+  margin-left: 8px;
+  font-size: 45px;
+  margin-bottom: 2rem;
+  color: #faebeb;
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 600;
+}
+
+.pleasure-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.card-number {
+  background-color: #e50914;
+  color: #ffe5e5;
+  font-size: 1.25rem;
+  font-family: "Playfair Display";
+  width: 45px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding-bottom: 6px;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.card-content h3 {
+  padding-left: 5px;
+  color: #ffe5e5;
+  font-family: "Playfair Display";
+  font-size: 22.5px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28.13px;
+}
+
+.card-content p {
+  padding: 8px;
+  color: #ffe5e5;
+  font-family: "DM Sans";
+  font-size: 16.2px;
+  font-style: normal;
+  font-weight: 400;
+  padding-right: 25px;
+  line-height: 25.92px;
+}
+
+.cta-button-pleasure {
+  background-color: #e60000;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  margin-right: 680px;
+}
+
+.cta-button-pleasure:hover {
+  background-color: #f04e4e;
+}
+
+/* Positions section */
+
+.positions-section {
+  background-color: #000;
+  color: #fff;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.table-container {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: transparent;
+}
+
+thead {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+th {
+  padding: 20px;
+  text-align: left;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+
+td {
+  padding: 20px;
+  max-width: 10px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.cta-button-position {
+  background-color: #e60000;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  margin-right: 425px;
+}
+
+.cta-button-position:hover {
+  background-color: #f04e4e;
 }
 
 /* Responsividade */
@@ -736,6 +1060,28 @@ html::-webkit-scrollbar-thumb {
   .features {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 36px;
+    padding: 0 20px;
+  }
+
+  .table-container {
+    margin: 0 10px;
+  }
+
+  th,
+  td {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .cta-button {
+    padding: 12px 24px;
+    font-size: 14px;
   }
 }
 </style>
